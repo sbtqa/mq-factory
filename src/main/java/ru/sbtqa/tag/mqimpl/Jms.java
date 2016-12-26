@@ -37,7 +37,7 @@ public class Jms implements Mq<Message> {
 
         LOG.info("Last message ID: " + lastMsgId);
         LOG.info("***Publishing message***");
-        LOG.info("Message: \n" + requestMsg + "\n Queue " + queueName);
+        LOG.info("Message: \n {} \n Queue {}", requestMsg, queueName);
         sessionClose(session);
     }
 
