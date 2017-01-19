@@ -63,9 +63,7 @@ public interface Mq<T> {
      * @param key key value
      * @param topicName topic name
      */
-    public default void sendRequestTo(String requestMsg, String key, String topicName) {
-        throw new NotImplementedException("Not implemented in current class");
-    }
+    public void sendRequestTo(String requestMsg, String key, String topicName);
 
     /**
      * Get appropriate number of the last messages from Kafka topic in
@@ -77,9 +75,7 @@ public interface Mq<T> {
      * @return appropriate number of messages from the end of partition as List
      * of Consumer Records
      */
-    public default List<ConsumerRecord<String, String>> getLastMessagesInPartition(String topicName, int partiton, int numberOfMessages) {
-        throw new NotImplementedException("Not implemented in current class");
-    }
+    public List<ConsumerRecord<String, String>> getLastMessagesInPartition(String topicName, int partiton, int numberOfMessages);
 
     /**
      * Get message from queue by parameter and parameter's value
@@ -91,9 +87,7 @@ public interface Mq<T> {
      * @throws ru.sbtqa.tag.mqfactory.exception.MqException if can't get message
      * from queue or can't establish browser session
      */
-    public default List<Object> getMessagesFromByParam(String queueName, String paramName, String paramValue) throws MqException {
-        throw new NotImplementedException("Not implemented in current class");
-    }
+    public List<Object> getMessagesFromByParam(String queueName, String paramName, String paramValue) throws MqException;
 
     /**
      * Browse all messages from queue
@@ -103,9 +97,7 @@ public interface Mq<T> {
      * @throws ru.sbtqa.tag.mqfactory.exception.MqException if can't create
      * browse session
      */
-    public default List<Object> browseAllMessagesFrom(String queueName) throws MqException {
-        throw new NotImplementedException("Not implemented in current class");
-    }
+    public List<Object> browseAllMessagesFrom(String queueName) throws MqException;
 
     /**
      * Browse all messages in Kafka topic at the specified partition
@@ -114,8 +106,6 @@ public interface Mq<T> {
      * @param partiton partition label
      * @return List of ConsumerRecords
      */
-    public default List<ConsumerRecord<String, String>> browseAllMessagesFromPartition(String topicName, int partiton) {
-        throw new NotImplementedException("Not implemented in current class");
-    }
+    public List<ConsumerRecord<String, String>> browseAllMessagesFromPartition(String topicName, int partiton);
 
 }

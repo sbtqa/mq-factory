@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.List;
 import javax.jms.*;
+import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.slf4j.LoggerFactory;
 import ru.sbtqa.tag.mqfactory.exception.JmsException;
 import ru.sbtqa.tag.mqfactory.interfaces.Mq;
@@ -135,6 +136,21 @@ public class Jms implements Mq<Message> {
             throw new JmsException("Can't get property from message", ex);
         }
     }
+    
+    @Override
+    public void sendRequestTo(String requestMsg, String key, String topicName) {
+        throw new UnsupportedOperationException("Not supported in this realization."); 
+    }
+
+    @Override
+    public List<ConsumerRecord<String, String>> getLastMessagesInPartition(String topicName, int partiton, int numberOfMessages) {
+        throw new UnsupportedOperationException("Not supported in this realization."); 
+    }
+
+    @Override
+    public List<ConsumerRecord<String, String>> browseAllMessagesFromPartition(String topicName, int partiton) {
+        throw new UnsupportedOperationException("Not supported in this realization."); 
+    }
 
     private Session createSession(boolean bln, int i) throws JmsException {
         try {
@@ -159,5 +175,7 @@ public class Jms implements Mq<Message> {
             throw new JmsException("Can't create queue", ex);
         }
     }
+
+    
 
 }

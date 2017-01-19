@@ -16,6 +16,7 @@ import ru.sbtqa.tag.mqfactory.exception.KafkaException;
 import ru.sbtqa.tag.mqfactory.interfaces.Mq;
 import ru.sbtqa.tag.qautils.properties.Props;
 import org.slf4j.Logger;
+import ru.sbtqa.tag.mqfactory.exception.MqException;
 
 public class Kafka implements Mq<ConsumerRecord> {
 
@@ -59,7 +60,9 @@ public class Kafka implements Mq<ConsumerRecord> {
         consumer.assign(Arrays.asList(tp));
         consumer.seek(tp, consumer.position(tp) - numberOfMessages);
         ConsumerRecords<String, String> records = consumer.poll(Long.valueOf(Props.get(TIMEOUT)));
-        records.forEach(buffer::add);
+        for(ConsumerRecord<String, String> rec :records){
+            buffer.add(rec);
+        }
         consumer.close();
         return buffer;
     }
@@ -74,7 +77,9 @@ public class Kafka implements Mq<ConsumerRecord> {
         consumer.assign(Arrays.asList(tp));
         consumer.seekToBeginning(tp);
         ConsumerRecords<String, String> records = consumer.poll(Long.valueOf(Props.get(TIMEOUT)));
-        records.forEach(buffer::add);
+        for(ConsumerRecord<String, String> rec :records){
+            buffer.add(rec);
+        }
         consumer.close();
         return buffer;
     }
@@ -109,6 +114,16 @@ public class Kafka implements Mq<ConsumerRecord> {
             propertyValue = "null";
         }
         return propertyValue;
+    }
+
+    @Override
+    public List<Object> getMessagesFromByParam(String queueName, String paramName, String paramValue) throws MqException {
+        throw new UnsupportedOperationException("Not supported in this realization.");
+    }
+
+    @Override
+    public List<Object> browseAllMessagesFrom(String queueName) throws MqException {
+        throw new UnsupportedOperationException("Not supported in this realization."); 
     }
 
 }
