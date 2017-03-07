@@ -15,6 +15,7 @@ public class Jms implements Mq<Message> {
 
     private static final Logger LOG = LoggerFactory.getLogger(Jms.class);
     private static final String TIMEOUT = "timeout";
+    private static final Long DEFAULT_TIMEOUT_MLS = 50000L;
     
     private static Connection connection;
     private String lastMsgId;
@@ -61,7 +62,7 @@ public class Jms implements Mq<Message> {
             }
         } else {
             try {
-                message = receiver.receive(Long.getLong(Props.get(TIMEOUT)));
+                message = receiver.receive(Long.valueOf(Props.get(TIMEOUT)));
             } catch (JMSException ex) {
                 throw new JmsException("Can't receive message", ex);
             }
@@ -76,6 +77,13 @@ public class Jms implements Mq<Message> {
         List<Object> messages = new ArrayList<>();
         QueueBrowser browser;
         Enumeration eQueue;
+        Long timeout;
+         if (Props.get(TIMEOUT).isEmpty()){
+            timeout = DEFAULT_TIMEOUT_MLS;
+        }
+        else {
+            timeout = Long.valueOf(Props.get(TIMEOUT));
+        }
         Session session = createSession(false, Session.AUTO_ACKNOWLEDGE);
         Queue queue = createQueue(session, queueName);
         try {
@@ -85,7 +93,8 @@ public class Jms implements Mq<Message> {
             throw new JmsException("Can't open browser session", ex);
         }
         long startTime = System.currentTimeMillis();
-            while ((System.currentTimeMillis() - startTime) < Long.valueOf(Props.get(TIMEOUT)) && eQueue.hasMoreElements()) {
+       
+            while ((System.currentTimeMillis() - startTime) < timeout && eQueue.hasMoreElements()) {
                 try {
                     Message message = (Message) eQueue.nextElement();
                     QueueReceiver receiver = (QueueReceiver) session.createConsumer(queue, "JMSMessageID='" + message.getJMSMessageID() + "'");

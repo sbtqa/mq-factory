@@ -6,7 +6,6 @@
 package ru.sbtqa.tag.mqfactory.interfaces;
 
 import java.util.List;
-import org.apache.commons.lang3.NotImplementedException;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import ru.sbtqa.tag.mqfactory.exception.MqException;
 
