@@ -1,7 +1,7 @@
 # Mq-Factory
 [![Build Status](https://travis-ci.org/sbtqa/mq-factory.svg?branch=master)](https://travis-ci.org/sbtqa/mq-factory) [![GitHub release](https://img.shields.io/github/release/sbtqa/mq-factory.svg?style=flat-square)](https://github.com/sbtqa/mq-factory/releases) [![Maven Central](https://img.shields.io/maven-central/v/ru.sbtqa.tag/mq-factory.svg)](https://mvnrepository.com/artifact/ru.sbtqa.tag/mq-factory)
 
-Mq-Factory - java framework для автоматизированного тестирования посредствам очередей (MQ). Mq-factory поддерживает следующие типы очередей:
+Mq-Factory - java framework для автоматизированного тестирования посредством очередей (MQ). Mq-factory поддерживает следующие типы очередей:
 *  [JMS](https://ru.wikipedia.org/wiki/Java_Message_Service)
 *  [Kafka](https://ru.wikipedia.org/wiki/Apache_Kafka)
 
