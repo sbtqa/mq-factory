@@ -10,7 +10,7 @@ Mq-Factory - java framework для автоматизированного тес
 1. Java 7 или выше
 
 ### Контакты
-Нашли ошибку или появились вопросы? [Проверьте](https://github.com/sbtqa/mq-factory/issues) нет ли уже созданных задач? Если нет, то создайте [новую](https://github.com/sbtqa/mq-factory/issues/new)!
+Нашли ошибку или появились вопросы? [Проверьте](https://github.com/sbtqa/mq-factory/issues), нет ли уже созданных задач. Если нет, то создайте [новую](https://github.com/sbtqa/mq-factory/issues/new)!
 
 ### Лицензия 
 q-Factory выпущен под лицензией Apache 2.0. [Подробности](https://github.com/sbtqa/mq-factory/blob/master/LICENSE).
