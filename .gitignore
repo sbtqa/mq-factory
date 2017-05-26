@@ -2,3 +2,5 @@
 /target/
 /..travis.yml.swp
 /travis.log
+/mq-factory.iml
+/.idea/
